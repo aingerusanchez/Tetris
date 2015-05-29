@@ -1,0 +1,132 @@
+<!--
+Autor: Aingeru Sanchez
+Fecha de creación: 19/05/2015
+Documento HTML para la página web del juego Tetris
+-->
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Tetris</title>
+        <link rel="shortcut icon" href="imagenes/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="imagenes/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="tetris.css">
+        <script src="tetris.js"></script>
+    </head>
+    <body >
+        <!--CONTENEDOR-->
+        <div id="contenedor">
+            <!--CABECERA-->
+            <header id="cabecera" ><b>
+                <font color="yellow" size="15px">T</font> 
+                <font color="red" size="15px">E</font> 
+                <font color="cyan" size="15px">T</font> 
+                <font color="green" size="15px">R</font> 
+                <font color="magenta" size="15px">I</font> 
+                <font color="orange" size="15px">S</font> 
+                </b></header>
+            <!--CONTENIDO interacctivo de la página: Juego del tetris-->
+            <div id="contenido">
+                <!--PANEL IZQUIERDO con SIGUIENTE_PIEZA e INSTRUCCIONES-->
+                <div id="izquierda">
+                    <div id="siguientePieza">
+                        <h2 style="color:white">SIGUIENTE PIEZA</h2>
+                        <canvas id="nextShape" width="175" height="90" style="color:white">siguiente pieza</canvas>
+                    </div>
+
+                    <div id="comoJugar">
+                        <h3><u>COMO JUGAR</u></h3>
+                        <b>- Para mover la pieza:</b></br> Izquierda | Abajo | Derecha
+                    <img src="imagenes/teclas_direcciones.jpeg" alt="teclas direccionales">
+                    <br><b>- Para rotar la pieza:</b> Arriba</br> 
+                <img src="imagenes/tecla_arriba.jpg" alt="tecla arriba">
+                <br><b>- Para soltar la pieza:</b> Barra espaciadora</br> 
+            <img src="imagenes/barra_espaciadora.jpeg" alt="barra espaciadora" width="200" height="50">
+            <br><b>- Pausar/Reanudar el juego:</b> Letra P</br>
+        <img src="imagenes/tecla-p.jpeg" alt="tecla p">
+        </div>
+    <p id="instrucciones">
+    <h3><u>INSTRUCCIONES</u></h3>
+    El juego consiste en completar lineas horizontales ordenando las piezas que van cayendo. Cuantas mas filas seguidas completes ¡más puntos sumaras! Pista: Atento a la <i>siguiente pieza</i> ;)
+    </p>
+<p id="recomendacion">Para disfrutar de una mejor experiencia de juego, recomiendo jugar en modo <b>pantalla completa</b>. Para ello, <b>pulsa F11</b> en Windows o <b>Cmd+Shift+F</b> en Mac. Cuando quieras salir vuelve a pulsar la misma tecla. En caso de solapamiento de elementos, prueba a disminuir el zoom de la página jugando con 'Ctrl+' y 'Ctrl-'.
+</p> 
+
+</div>
+<!--TABLERO DEL TETRIS-->
+<div id="tablero">
+        <canvas id="canvas" width="300" height="600"></canvas>
+</div>
+<!--PANEL DERECHO con NIVEL_ACTUAL y RANKING-->
+<div id="derecha">
+    <button id="btnMusica" onclick="onOffMusica()"><img id="imgMusica" src="imagenes/bafleON.png" width="30px" height="30px"></button> 
+    <span>Si pulsa este botón, pulse dentro del tablero </br>para seguir jugando sin reactivarlo.</span>
+<!--<button id="btnPausa" onclick="Pausa()"><img id="imgPausa" src="imagenes/boton-pausa.jpg" width="30px" height="30px"></button> -->
+<p id="pausa" align=left></p>
+<div id="puntuacion">PUNTUACIÓN
+    <br><canvas id="puntos" width="110" height="50" style="color:white">0</canvas>
+</div>
+<div id="clasificacion">RANKING
+    <br><canvas id="ranking" width="320" height="210" style="color:white"></canvas></br>
+    <div id="mediaYPartidas">
+        Puntuación media:<div id="media"></div>
+        Número de partidas:<div id="partidas"></div>
+    </div>
+    
+</div>
+</div>
+</div>
+<!--FOOTER de la página-->
+<footer id="pie">Juego del TETRIS desarrollado en la asignatura de DAWE por Aingeru</footer>
+</div>
+
+<script>
+    // ===== main ====
+    // Tetris canvas related variables
+    var canvas = document.getElementById("canvas");
+    var ctx = canvas.getContext("2d");
+    // Next Shape canvas related variables
+    var canvasNS = document.getElementById("nextShape");
+    var ctxNS = canvasNS.getContext("2d");
+    // Recuadro canvas para mostrar la puntuacion
+    var canvasPuntos = document.getElementById("puntos");
+    var ctxPuntos = canvasPuntos.getContext("2d");
+    // Recuadro canvas para mostrar clasificacion
+    var canvasRanking = document.getElementById("ranking");
+    var ctxRanking = canvasRanking.getContext("2d");
+
+    // limpiar canvas
+    ctx.fillStyle = 'silver';
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+
+    var game = new Tetris();
+    game.init();
+</script>
+
+<audio id="musica" autoplay loop>
+    <source src="audio/Tetris-remix.mp3" type="audio/ogg">
+    <source src="audio/Tetris.ogg" type="audio/ogg">
+    <source src="audio/Tetris.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="game-over">
+    <source src="audio/game-over.mp3" type="audio/mpeg">
+</audio>
+<audio id="linea">
+    <source src="audio/linea.mp3" type="audio/mpeg">
+</audio>
+<audio id="soltar-pieza">
+    <source src="audio/soltar-pieza.mp3" type="audio/mpeg">
+</audio>
+<audio id="risa">
+    <source src="audio/risa-malvada.mp3" type="audio/mpeg">
+</audio>
+<audio id="addShape">
+    <source src="audio/addShape.mp3" type="audio/mpeg">
+</audio>
+<audio id="giro">
+    <source src="audio/giro.mp3" type="audio/mpeg">
+</audio>
+
+</body>
+</html>

@@ -1,0 +1,170 @@
+/*
+ Autor: Aingeru Sanchez
+ Fecha de creación: 19/05/2015
+ Estilos para el diseño de la página tetris.html
+*/
+
+/*CONTENEDOR*/
+body {
+/* IMAGEN DE FONDO*/
+    background: url(imagenes/background.jpg) repeat fixed center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+}
+/*CABECERA*/
+header {
+    text-align: center;
+    padding-right: 35px;
+    font-size: 30px;
+    font-family: sans-serif bold;
+    display: block;
+/*
+    border: solid 3px;
+    margin: 5px;
+    margin-left: 500px;
+    margin-right: 500px;
+    padding: 5px;
+*/
+}
+/*CONTENIDO INTERACTIVO*/
+#contenido {
+}
+/*PANEL IZQUIERDO*/
+#izquierda {
+    text-align: right;
+    width: 440px;
+    height: 600px;
+    float: left;
+    margin: 5px;
+    padding: 5px;
+}
+/*SIGUIENTE PIEZA*/
+#siguientePieza{
+    background-color: darkblue;
+    float: right;
+    padding: inherit;
+    border-right: 20px;
+    height: 210px;
+    width: 200px;
+    text-align: center;
+}
+/*NEXT SHAPE CANVAS*/
+#nextShape {
+    background-color: white;
+    align-items: center;
+    float: right;
+    padding-top: 15px;
+    margin-right: 14px;
+}
+/*COMO JUGAR*/
+#comoJugar {
+    padding-left: 5px;
+    padding-right: 5px;
+    text-align: left;
+/*    clear: both;*/
+/*    position: relative;*/
+}
+/*INSTRUCCIONES*/
+#instrucciones {
+    float: left;
+    font-size: 35px;
+    font-family: serif;
+    text-align: center;
+}
+#recomendacion {
+    border: 2px solid red;
+    text-align: center;
+    padding: 2px;
+}
+/*TABLERO DE JUEGO*/
+#tablero {
+    background-image: url(imagenes/tetris-logo-n.jpg);
+    position: absolute;
+    left: 37%;
+    width: 300px;
+    height: 600px;
+    border: 3px solid black;
+    font-family: Tetris;
+}
+/*PANEL DERECHO*/
+#contenido #derecha {
+    width: 400px;
+    height: 550px;
+    float: right;
+    margin: 5px;
+    padding: 5px;
+}
+span {
+    float: right;
+    padding-right: 50px;
+}
+/*PAUSA*/
+#pausa {
+    background-color: red;
+    text-align: center;
+    font-size: 30px;
+    font-family: Tetris;
+    color: white;
+    margin-top: 1px;
+    margin-bottom: 3px;
+}
+/*PUNTUACION*/
+#puntuacion {
+    background-color: darkgreen;
+    width: 200px;
+    height: 100px;
+    margin-right: 14px;
+    margin-left: 100px;
+    padding: 10px;
+    text-align: center;
+    color: white;
+    font-size: 25px;
+    font-family: sans-serif bold;
+}
+#puntos {
+    background-color: black;
+    align-items: center;
+    margin-top: 10px;
+}
+/*RANKING*/
+#clasificacion {
+    background-color: darkred;
+    margin-top: 10px;
+    padding-top: 10px;
+    width: 400px;
+    height: 380px;
+    text-align: center;
+    color: white;
+    font-size: 25px;
+}
+/*CANVAS RANKING*/
+#ranking {
+    background-color: black;
+    align-items: stretch;
+    margin-top: 10px;
+}
+/*MOSTRAR MEDIA Y PARTIDAS*/
+#mediaYPartidas {
+    font-size: 25px;
+    text-align: center;
+}
+/*PIE DE PÁGINA*/
+#pie {
+    clear: both;
+    float: right;
+    text-align: center;
+/*    padding: 3px;*/
+}
+
+/*ESTILOS DE LETRA*/
+h3 {
+    font-size: 25px;
+}
+/*
+@font-face {
+    font-family: "Tetris";
+    src: url("tetris.ttf");
+}*/
